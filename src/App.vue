@@ -1,7 +1,14 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <ul>
+      <li>
+        <router-link to="/">home</router-link>
+      </li>
+      <li>
+        <router-link to="/about">about</router-link>
+      </li>
+    </ul>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -17,7 +24,7 @@ import HelloWorld from './components/HelloWorld.vue';
 export default class App extends Vue {}
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -25,5 +32,21 @@ export default class App extends Vue {}
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+li {
+  display: inline-block;
+  margin: 0 8px;
+}
+
+a {
+  display: block;
+  color: black;
 }
 </style>
