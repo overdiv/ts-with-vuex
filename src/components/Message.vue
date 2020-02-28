@@ -10,6 +10,6 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Message extends Vue {
-  message: string = '';
+  public message: string = '';
 }
 </script>

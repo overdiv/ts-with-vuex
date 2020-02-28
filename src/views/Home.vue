@@ -2,19 +2,24 @@
   <div class="home">
     <HelloWorld msg="hello world" />
     <Message />
+    <Children :parentMessage="message" />
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue';
-import Message from '@/components/Message';
+import Message from '@/components/Message.vue';
+import Children from '@/components/Children.vue';
 
-export default {
-  name: 'Home',
+@Component({
   components: {
     HelloWorld,
     Message,
+    Children,
   },
-};
+})
+export default class Home extends Vue {
+  private message: string = 'Props message!!';
+}
 </script>
