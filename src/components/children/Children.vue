@@ -1,4 +1,4 @@
-<template src="./Child.html"></template>
+<template src="./Children.html"></template>
 <style src="./Children.scss" lang="scss" scoped></style>
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
