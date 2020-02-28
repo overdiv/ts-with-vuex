@@ -13,7 +13,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue';
 import Message from '@/components/Message.vue';
-import Children from '@/components/children/Children';
+import Children from '@/components/children/Children.vue';
 
 @Component({
   components: {
