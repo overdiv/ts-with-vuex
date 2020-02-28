@@ -2,7 +2,10 @@
   <div class="home">
     <HelloWorld msg="hello world" />
     <Message />
-    <Children :parentMessage="message" />
+    <hr>
+    <Children :parentMessage="changeMsg" />
+    <br>
+    <button @click="changeMessage">Change Message</button>
   </div>
 </template>
 
@@ -10,7 +13,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue';
 import Message from '@/components/Message.vue';
-import Children from '@/components/Children.vue';
+import Children from '@/components/children/Children';
 
 @Component({
   components: {
@@ -20,6 +23,11 @@ import Children from '@/components/Children.vue';
   },
 })
 export default class Home extends Vue {
+  public changeMsg: string = 'Message...';
   private message: string = 'Props message!!';
+
+  public changeMessage() {
+    this.changeMsg = 'Hello Watch!';
+  }
 }
 </script>
