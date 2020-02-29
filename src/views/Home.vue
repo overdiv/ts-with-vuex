@@ -15,6 +15,9 @@
     <ChildrenInject />
     <hr>
     <label><ChildrenCheckbox v-model="checked" @change="change" /> {{ text }}</label>
+    <hr>
+    <Accordion />
+    <Dropdown />
   </div>
 </template>
 
@@ -26,6 +29,8 @@ import Children from '@/components/children/Children.vue';
 import ChildrenEmit from '@/components/ChildrenEmit.vue';
 import ChildrenInject from '@/components/ChildrenInject.vue';
 import ChildrenCheckbox from '@/components/ChildrenCheckbox.vue';
+import Accordion from '@/components/Accordion.vue';
+import Dropdown from '@/components/Dropdown.vue';
 
 @Component({
   components: {
@@ -35,6 +40,8 @@ import ChildrenCheckbox from '@/components/ChildrenCheckbox.vue';
     ChildrenEmit,
     ChildrenInject,
     ChildrenCheckbox,
+    Accordion,
+    Dropdown,
   },
 })
 export default class Home extends Vue {
