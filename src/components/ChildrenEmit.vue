@@ -8,7 +8,7 @@ import { Component, Vue, Emit } from 'vue-property-decorator';
 @Component
 export default class ChildrenEmit extends Vue {
   @Emit('counter') private countEmit() {
-    console.log('counter')
+    return null;
   }
 }
 </script>

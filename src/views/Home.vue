@@ -7,12 +7,14 @@
     <br>
     <button @click="changeMessage">Change Message</button>
     <hr>
-    <ChildrenEmit @counter="countNumber"></ChildrenEmit>
+    <ChildrenEmit @counter="countNumber" />
     <p>
       부모에서 숫자를 보여줍니다. : {{ count }}
     </p>
     <hr>
     <ChildrenInject />
+    <hr>
+    <label><ChildrenCheckbox v-model="checked" @change="change" /> {{ text }}</label>
   </div>
 </template>
 
@@ -23,6 +25,7 @@ import Message from '@/components/Message.vue';
 import Children from '@/components/children/Children.vue';
 import ChildrenEmit from '@/components/ChildrenEmit.vue';
 import ChildrenInject from '@/components/ChildrenInject.vue';
+import ChildrenCheckbox from '@/components/ChildrenCheckbox.vue';
 
 @Component({
   components: {
@@ -31,10 +34,16 @@ import ChildrenInject from '@/components/ChildrenInject.vue';
     Children,
     ChildrenEmit,
     ChildrenInject,
+    ChildrenCheckbox,
   },
 })
 export default class Home extends Vue {
   public changeMsg: string = 'Message...';
+
+  @Provide('message') public msg: string = 'provide/inject complate';
+
+  public checked: boolean = false;
+  public text: string = '동의하지 않습니다.';
   private message: string = 'Props message!!';
   private count: number = 0;
 
@@ -46,6 +55,15 @@ export default class Home extends Vue {
     this.count += 1;
   }
 
-  @Provide('message') msg: string = 'provide/inject complate';
+  public change(checked: boolean) {
+    this.checked = checked;
+    this.text = checked ? '동의합니다.' : '동의하지 않습니다.';
+  }
 }
 </script>
+
+<style lang="scss" scoped>
+label {
+  cursor: pointer;
+}
+</style>
