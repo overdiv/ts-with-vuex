@@ -18,6 +18,9 @@
     <hr>
     <Accordion />
     <Dropdown />
+    <hr>
+    <EventChild1 />
+    <EventChild2 />
   </div>
 </template>
 
@@ -31,6 +34,8 @@ import ChildrenInject from '@/components/ChildrenInject.vue';
 import ChildrenCheckbox from '@/components/ChildrenCheckbox.vue';
 import Accordion from '@/components/Accordion.vue';
 import Dropdown from '@/components/Dropdown.vue';
+import EventChild1 from '@/components/EventChild1.vue';
+import EventChild2 from '@/components/EventChild2.vue';
 
 @Component({
   components: {
@@ -42,6 +47,8 @@ import Dropdown from '@/components/Dropdown.vue';
     ChildrenCheckbox,
     Accordion,
     Dropdown,
+    EventChild1,
+    EventChild2,
   },
 })
 export default class Home extends Vue {
