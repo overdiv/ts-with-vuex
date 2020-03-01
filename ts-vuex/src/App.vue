@@ -1,20 +1,30 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <Count />
+    <button @click="increase">증가</button>
+    <button @click="decrease">감소</button>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from './components/HelloWorld.vue';
+import Count from './components/count.vue';
 
 @Component({
   components: {
-    HelloWorld,
+    Count,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  increase() {
+    this.$store.dispatch('increase');
+  }
+
+  decrease() {
+    this.$store.dispatch('decrease');
+  }
+}
 </script>
 
 <style lang="scss">
