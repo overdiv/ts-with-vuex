@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <Count />
+    <!-- <Count />
     <button @click="increase">증가</button>
-    <button @click="decrease">감소</button>
+    <button @click="decrease">감소</button> -->
+    <hr>
+    {{ $store.state }}
   </div>
 </template>
 
@@ -23,6 +25,11 @@ export default class App extends Vue {
 
   decrease() {
     this.$store.dispatch('decrease');
+  }
+
+  created() {
+    console.log(this.$store);
+    this.$store.dispatch('moduleA/setRootData', 'test')
   }
 }
 </script>

@@ -11,7 +11,7 @@ import Bus from '@/common/event-bus';
 @Component
 export default class EventChild2 extends Vue {
   public message: string = '';
-  
+
   public created() {
     Bus.$on('sendMessage', (message: string) => {
       this.message = message;
