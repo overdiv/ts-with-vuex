@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <!-- <Count />
+    <Count />
     <button @click="increase">증가</button>
-    <button @click="decrease">감소</button> -->
+    <button @click="decrease">감소</button>
     <hr>
     {{ $store.state }}
   </div>
@@ -10,8 +10,9 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+import { Action, Mutation } from 'vuex-class';
 import Count from './components/count.vue';
+
 
 @Component({
   components: {
@@ -19,18 +20,28 @@ import Count from './components/count.vue';
   },
 })
 export default class App extends Vue {
-  increase() {
-    this.$store.dispatch('increase');
-  }
+  // store - vuex-module-decorators
+  // increase() {
+  //   this.$store.dispatch('increase');
+  // }
 
-  decrease() {
-    this.$store.dispatch('decrease');
-  }
+  // decrease() {
+  //   this.$store.dispatch('decrease');
+  // }
 
-  created() {
-    console.log(this.$store);
-    this.$store.dispatch('moduleA/setRootData', 'test')
-  }
+  // created() {
+  //   console.log(this.$store);
+  //   this.$store.dispatch('moduleA/setRootData', 'test')
+  // }
+
+  // vuex-class
+  @Action public readonly increase;
+
+  @Action public readonly decrease;
+
+  @Mutation public readonly setCount;
+
+
 }
 </script>
 

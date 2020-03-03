@@ -12,7 +12,7 @@ export interface RootState {
 const store: StoreOptions<RootState> = {
   modules: {
     moduleA,
-    moduleB
+    moduleB,
   },
   state: {
     data: 'root',
@@ -20,16 +20,16 @@ const store: StoreOptions<RootState> = {
   mutations: {
     setData(state, data: string) {
       state.data = data;
-    }
+    },
   },
   actions: {
     setRootData({commit}, data: string) {
       commit('setData', data);
-    }
+    },
   },
   getters: {
     data: (state) => state.data,
-  }
-}
+  },
+};
 
 export default new Vuex.Store(store);

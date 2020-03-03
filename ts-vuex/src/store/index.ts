@@ -14,7 +14,7 @@ const store: StoreOptions<State> = {
   mutations: {
     setCount(state: State, count: number) {
       state.count = count;
-    }
+    },
   },
   actions: {
     increase({state, commit}: ActionContext<State, State>) {
@@ -26,7 +26,7 @@ const store: StoreOptions<State> = {
   },
   getters: {
     count: (state, State) => state.count,
-  }
-}
+  },
+};
 
-export default new Vuex.Store(store)
+export default new Vuex.Store(store);
