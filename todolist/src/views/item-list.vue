@@ -22,13 +22,16 @@ import { mapGetters } from 'vuex';
   },
 })
 export default class ItemList extends Vue {
-  public renderList: any[] = [];
+  renderList: any[] = [];
+  allTodoList!: any[];
+  activeTodoList!: any[];
+  clearTodoList!: any[];
 
-  public created() {
-    this.initRenderList(this.$route.params.status);
+  created() {
+    this.$store.dispatch('initData');
   }
 
-  public initRenderList(status: 'active' | 'clear') {
+  initRenderList(status: string) {
     if (!status) {
       this.renderList = this.allTodoList;
     } else if (status === 'active') {
@@ -39,13 +42,14 @@ export default class ItemList extends Vue {
   }
 
   @Watch('$route.params.status')
-  public routeUpdate(newValue: 'active' | 'clear') {
+  routeUpdate(newValue: string) {
     this.initRenderList(newValue);
   }
 
   @Watch('$store.state.todoList', {deep: true})
-  public routeUpdate() {
-    this.initRenderList(this.$route.params.status);
+  stateUpdate() {
+    const status: string = this.$route.params.status;
+    this.initRenderList(status);
   }
 }
 </script>

@@ -1,17 +1,14 @@
 import Vue from 'vue';
 import Vuex, { StoreOptions } from 'vuex';
 import { State, Item } from './store.interface';
+import AxiosService from '../service/axios.service';
+import { AxiosResponse } from 'axios';
 
 Vue.use(Vuex);
 
 const store: StoreOptions<State> = {
   state: {
-    todoList: [
-      { id: 0, title: 'sdfasf', status: 'active' },
-      { id: 1, title: 'asdf-asdf', status: 'clear' },
-      { id: 2, title: 'sadf-dsaf', status: 'active' },
-      { id: 3, title: 'sdfasdf-asdfasf', status: 'clear' },
-    ],
+    todoList: [],
   },
   mutations: {
     // todo add
@@ -26,8 +23,16 @@ const store: StoreOptions<State> = {
     removeItem(state, id: number) {
       state.todoList.splice(id, 1);
     },
+    setTodoList(state, todoList: Item[]) {
+      state.todoList = todoList;
+    },
   },
   actions: {
+    async initData({commit}) {
+      //  todo http
+      const response: AxiosResponse<{todoList: Item[]}> = await AxiosService.instance.get('/data.json');
+      commit('setTodoList', response.data.todoList);
+    },
   },
   getters: {
     allTodoList: (state) => state.todoList,

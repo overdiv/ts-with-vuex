@@ -16,10 +16,12 @@ import { mapState } from 'vuex';
 @Component({
   computed: mapState([
     'todoList',
-  ])
+  ]),
 })
 export default class ItemInput extends Vue {
   title: string = '';
+  todoList!: any[];
+
   addItem() {
     this.$store.commit('addItem', {
       id: this.todoList.length + 1,

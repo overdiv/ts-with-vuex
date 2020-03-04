@@ -17,12 +17,12 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class ItemInput extends Vue {
-  @Prop() public readonly id!: number;
-  @Prop() public readonly title!: string;
-  @Prop() public readonly status!: 'active' | 'clear';
+  @Prop() readonly id!: number;
+  @Prop() readonly title!: string;
+  @Prop() readonly status!: 'active' | 'clear';
 
-  public changeStatus($event: Event) {
-    const checked: boolean = $event.target.checked;
+  changeStatus($event: Event) {
+    const checked: boolean = ($event.target as HTMLInputElement).checked;
 
     if (checked) {
       this.$store.commit('changeStatus', {id: this.id, status: 'clear'});
@@ -31,7 +31,7 @@ export default class ItemInput extends Vue {
     }
   }
 
-  public removeItem() {
+  removeItem() {
     this.$store.commit('removeItem', this.id);
   }
 }
